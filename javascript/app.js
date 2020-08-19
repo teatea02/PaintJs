@@ -1,5 +1,6 @@
 const canvas = document.querySelector('#jsCanvas'),
-    ctx = canvas.getContext('2d');
+    ctx = canvas.getContext('2d'),
+    colors = document.querySelectorAll('.jsColor');
 let isPainting = false; // defines whether it is painting or not
 
 canvas.width = 500;
@@ -28,6 +29,11 @@ function onMouseMove(event) {
     }
 }
 
+function onColorClick(event) {
+    const color = event.target.style.backgroundColor;
+    ctx.strokeStyle = color;
+}
+
 // function onMouseDown(event) {
 //     startPainting();
 // }
@@ -44,3 +50,14 @@ if (canvas) { // if canvas exists
     canvas.addEventListener("mouseup", stopPainting); // when mouse click finishes
     canvas.addEventListener("mouseleave", stopPainting); // when mouse leaves the canvas
 }
+
+// All the codes below does exactly the same thing!
+
+// Arrow Function type 1
+Array.from(colors).forEach(color => color.addEventListener("click", onColorClick));
+
+// Arrow Function type 2
+// Array.from(colors).forEach((color) => {color.addEventListener("click", onColorClick)});
+
+// Immediately-invoked Function type
+// Array.from(colors).forEach(function(color){color.addEventListener("click", onColorClick)});
