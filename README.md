@@ -1,3 +1,3 @@
 # About thie repository
-## 🎨 paintJs 🎨
+## 🎨 PaintJs 🎨
 A siple painting program made with JavaScript!
