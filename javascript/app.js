@@ -5,7 +5,8 @@ const canvas = document.querySelector('#jsCanvas'),
     colors = document.querySelectorAll('.jsColor'),
     range = document.querySelector('#jsRange'),
     mode = document.querySelector('#jsMode'),
-    save = document.querySelector('#jsSave');
+    save = document.querySelector('#jsSave'),
+    clear = document.querySelector('#jsClear');
 
 let isPainting = false, // defines whether it is painting or not
     isFilling = false; // defines whether current mode is filling or not
@@ -90,6 +91,13 @@ function onSaveClick(event) {
     link.click();
 }
 
+function onClearClick(event) {
+    curFillStyle = ctx.fillStyle;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, CANVAS_SIZE[0], CANVAS_SIZE[1]);
+    ctx.fillStyle = curFillStyle;
+}
+
 // function onMouseDown(event) {
 //     startPainting();
 // }
@@ -135,6 +143,10 @@ function main() { // main function
 
     if (save) { // if save exists
         save.addEventListener("click", onSaveClick);
+    }
+
+    if (clear) {
+        clear.addEventListener("click", onClearClick);
     }
 }
 
